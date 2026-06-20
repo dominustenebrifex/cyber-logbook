@@ -8,6 +8,7 @@ import { Partners } from "@/components/dev-design/Partners";
 import { Team } from "@/components/dev-design/Team";
 import { Access } from "@/components/dev-design/Access";
 import { FinalLog } from "@/components/dev-design/FinalLog";
+import { HudOverlay } from "@/components/dev-design/HudDiagnostics";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,6 +52,8 @@ function Index() {
         <Access />
         <FinalLog />
       </main>
+
+      <HudOverlay />
     </div>
   );
 }
