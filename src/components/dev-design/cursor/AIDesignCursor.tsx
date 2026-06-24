@@ -244,6 +244,117 @@ export function AIDesignCursor() {
     };
   }, []);
 
+  useEffect(() => {
+    const desktopPointer = window.matchMedia(DESKTOP_POINTER_QUERY);
+    const hasTouch = navigator.maxTouchPoints > 0 || "ontouchstart" in window;
+    if (desktopPointer.matches || !hasTouch) return;
+
+    const container = containerRef.current;
+    const pen = penRef.current;
+    const reticle = reticleRef.current;
+    if (!container || !pen || !reticle) return;
+
+    let frame = 0;
+    let active = false;
+    let usingPointerEvents = false;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let hasPosition = false;
+
+    const render = () => {
+      frame = 0;
+      if (!hasPosition) return;
+
+      // A short interpolation removes touch-event jitter while keeping the pen
+      // visually attached to the finger.
+      currentX += (targetX - currentX) * 0.58;
+      currentY += (targetY - currentY) * 0.58;
+      container.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      reticle.style.transform = "translate(-50%, -50%) scale(0.72)";
+      reticle.style.opacity = active ? "0.5" : "0";
+
+      if (active || Math.abs(targetX - currentX) > 0.25 || Math.abs(targetY - currentY) > 0.25) {
+        frame = requestAnimationFrame(render);
+      }
+    };
+
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(render);
+    };
+
+    const updatePosition = (x: number, y: number) => {
+      targetX = x;
+      targetY = y;
+      if (!hasPosition) {
+        currentX = x;
+        currentY = y;
+        hasPosition = true;
+      }
+      active = true;
+      container.dataset.touchActive = "true";
+      schedule();
+    };
+
+    const release = () => {
+      active = false;
+      container.dataset.touchActive = "false";
+      schedule();
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType !== "touch") return;
+      usingPointerEvents = true;
+      updatePosition(event.clientX, event.clientY);
+    };
+    const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") updatePosition(event.clientX, event.clientY);
+    };
+    const onPointerEnd = (event: PointerEvent) => {
+      if (event.pointerType === "touch") release();
+    };
+
+    // Safari versions without complete Pointer Event support use this fallback.
+    const onTouchStart = (event: TouchEvent) => {
+      if (usingPointerEvents) return;
+      const touch = event.touches[0];
+      if (touch) updatePosition(touch.clientX, touch.clientY);
+    };
+    const onTouchMove = (event: TouchEvent) => {
+      if (usingPointerEvents) return;
+      const touch = event.touches[0];
+      if (touch) updatePosition(touch.clientX, touch.clientY);
+    };
+    const onTouchEnd = () => {
+      if (!usingPointerEvents) release();
+    };
+
+    container.dataset.touchMode = "true";
+    window.addEventListener("pointerdown", onPointerDown, { passive: true });
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerup", onPointerEnd, { passive: true });
+    window.addEventListener("pointercancel", onPointerEnd, { passive: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      delete container.dataset.touchMode;
+      delete container.dataset.touchActive;
+      window.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerEnd);
+      window.removeEventListener("pointercancel", onPointerEnd);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, []);
+
   return (
     <>
       <canvas ref={canvasRef} className="ai-design-cursor-canvas" aria-hidden="true" />
@@ -276,3 +387,4 @@ export function AIDesignCursor() {
     </>
   );
 }
+
