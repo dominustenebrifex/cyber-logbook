@@ -7,6 +7,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Self-hosted deployments need a platform output. This lets Vercel discover
+  // the TanStack Start server and route every request to it.
+  nitro: { preset: "vercel" },
   vite: {
     build: {
       sourcemap: false,
