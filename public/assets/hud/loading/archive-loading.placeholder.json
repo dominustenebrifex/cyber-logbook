@@ -1,0 +1,7 @@
+{
+  "slot": "archive-loading",
+  "status": "placeholder",
+  "replaceWith": ["png", "svg", "webp"],
+  "notes": "Future archive loading HUD plate."
+}
+

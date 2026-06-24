@@ -1,0 +1,16 @@
+{
+  "category": "hud",
+  "purpose": "AI CORE, SIGNAL, ACCESS D-001, ERROR 017, scan reticles, corner frames, coordinates, and archive loading assets.",
+  "publicDirectory": "/assets/hud",
+  "subdirectories": {
+    "core": "/assets/hud/core",
+    "signal": "/assets/hud/signal",
+    "access": "/assets/hud/access",
+    "errors": "/assets/hud/errors",
+    "reticles": "/assets/hud/reticles",
+    "frames": "/assets/hud/frames",
+    "coordinates": "/assets/hud/coordinates",
+    "loading": "/assets/hud/loading"
+  }
+}
+

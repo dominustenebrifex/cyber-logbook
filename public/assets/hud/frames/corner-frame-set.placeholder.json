@@ -1,0 +1,7 @@
+{
+  "slot": "corner-frame-set",
+  "status": "placeholder",
+  "replaceWith": ["png", "svg", "webp"],
+  "notes": "Future corner frame asset set."
+}
+

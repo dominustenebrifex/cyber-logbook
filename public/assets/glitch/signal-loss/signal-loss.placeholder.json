@@ -1,0 +1,7 @@
+{
+  "slot": "signal-loss",
+  "status": "placeholder",
+  "replaceWith": ["png", "webp", "avif"],
+  "notes": "Future signal loss texture or frame."
+}
+

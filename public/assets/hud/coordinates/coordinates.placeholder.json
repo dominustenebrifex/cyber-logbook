@@ -1,0 +1,7 @@
+{
+  "slot": "coordinates",
+  "status": "placeholder",
+  "replaceWith": ["png", "svg", "webp"],
+  "notes": "Future coordinates HUD overlay."
+}
+

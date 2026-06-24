@@ -1,0 +1,12 @@
+{
+  "category": "glitch",
+  "purpose": "RGB displacement, static noise, signal loss, and scanline distortion assets.",
+  "publicDirectory": "/assets/glitch",
+  "subdirectories": {
+    "rgbDisplacement": "/assets/glitch/rgb-displacement",
+    "staticNoise": "/assets/glitch/static-noise",
+    "signalLoss": "/assets/glitch/signal-loss",
+    "scanlineDistortion": "/assets/glitch/scanline-distortion"
+  }
+}
+

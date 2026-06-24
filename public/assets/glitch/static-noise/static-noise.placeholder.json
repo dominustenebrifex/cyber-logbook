@@ -1,0 +1,7 @@
+{
+  "slot": "static-noise",
+  "status": "placeholder",
+  "replaceWith": ["png", "webp", "avif"],
+  "notes": "Future static noise texture."
+}
+

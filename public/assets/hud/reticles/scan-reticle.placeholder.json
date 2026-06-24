@@ -1,0 +1,7 @@
+{
+  "slot": "scan-reticle",
+  "status": "placeholder",
+  "replaceWith": ["png", "svg", "webp"],
+  "notes": "Future scan reticle overlay."
+}
+

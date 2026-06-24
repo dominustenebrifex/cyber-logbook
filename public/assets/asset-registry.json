@@ -1,0 +1,298 @@
+{
+  "version": 1,
+  "publicBase": "/assets",
+  "statusValues": ["existing", "placeholder"],
+  "heroSequence": {
+    "aiConsciousness": {
+      "directory": "/assets/hero/ai-face",
+      "slots": {
+        "frontAwakened": {
+          "status": "existing",
+          "path": "/assets/hero/ai-face/face_front_awakened.png"
+        },
+        "frontFinal": {
+          "status": "existing",
+          "path": "/assets/hero/ai-face/face_front_final.png"
+        },
+        "leftAngle": {
+          "status": "existing",
+          "path": "/assets/hero/ai-face/face_left_angle.png"
+        },
+        "rightAngle": {
+          "status": "existing",
+          "path": "/assets/hero/ai-face/face_right_angle.png"
+        },
+        "fragmented": {
+          "status": "existing",
+          "path": "/assets/hero/ai-face/face_fragmented.png"
+        }
+      }
+    },
+    "corruptedAi": {
+      "directory": "/assets/hero/corruption",
+      "slots": {
+        "glitchStage": {
+          "status": "existing",
+          "path": "/assets/hero/ai-face/face_glitch_stage.png"
+        },
+        "corruptionMask": {
+          "status": "placeholder",
+          "path": "/assets/hero/corruption/corruption-mask.placeholder.json"
+        },
+        "dataTear": {
+          "status": "placeholder",
+          "path": "/assets/hero/corruption/data-tear.placeholder.json"
+        }
+      }
+    },
+    "butterflyEmergenceFrames": {
+      "directory": "/assets/hero/butterflies",
+      "frames": [
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_side_closed.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_half_open_left.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_half_open_right.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_front_open.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_left_turn.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_right_turn.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_glitch_corruption.png"
+        },
+        {
+          "status": "existing",
+          "path": "/assets/hero/butterflies/butterfly_glitch_corruption_final.png"
+        }
+      ]
+    },
+    "dProtocolSymbols": {
+      "directory": "/assets/hero/d-protocol",
+      "slots": {
+        "front": {
+          "status": "existing",
+          "path": "/assets/hero/d-protocol/logo_D_front.png"
+        },
+        "formation": {
+          "status": "existing",
+          "path": "/assets/hero/d-protocol/logo_D_formation.png"
+        },
+        "activatedEnergy": {
+          "status": "existing",
+          "path": "/assets/hero/d-protocol/logo_D_activated_energy.png"
+        },
+        "activatedComposite": {
+          "status": "existing",
+          "path": "/assets/hero/d-protocol/logo_D_activated_com.png"
+        },
+        "perspective45": {
+          "status": "existing",
+          "path": "/assets/hero/d-protocol/logo_D_perspective_45deg.png"
+        }
+      }
+    }
+  },
+  "background": {
+    "cosmicNebula": {
+      "directory": "/assets/background/cosmos",
+      "slots": {
+        "deepSpace": {
+          "status": "existing",
+          "path": "/assets/background/deep_space_bg.png"
+        },
+        "cosmicEnergy": {
+          "status": "existing",
+          "path": "/assets/background/cosmic_energy.png"
+        },
+        "nebulaPlate": {
+          "status": "placeholder",
+          "path": "/assets/background/cosmos/nebula-plate.placeholder.json"
+        }
+      }
+    },
+    "starFields": {
+      "directory": "/assets/background/stars",
+      "slots": {
+        "farStars": {
+          "status": "existing",
+          "path": "/assets/background/far_stars.png"
+        },
+        "nearParticles": {
+          "status": "existing",
+          "path": "/assets/background/near_particles.png"
+        },
+        "smallGalaxies": {
+          "status": "existing",
+          "path": "/assets/background/small_galaxies.png"
+        },
+        "starDepthLayer": {
+          "status": "placeholder",
+          "path": "/assets/background/stars/star-depth-layer.placeholder.json"
+        }
+      }
+    },
+    "noiseOverlays": {
+      "directory": "/assets/background/overlays",
+      "slots": {
+        "fineNoise": {
+          "status": "placeholder",
+          "path": "/assets/background/overlays/fine-noise.placeholder.json"
+        },
+        "vignetteNoise": {
+          "status": "placeholder",
+          "path": "/assets/background/overlays/vignette-noise.placeholder.json"
+        }
+      }
+    },
+    "digitalTextures": {
+      "directory": "/assets/background/textures",
+      "slots": {
+        "gridInterference": {
+          "status": "placeholder",
+          "path": "/assets/background/textures/grid-interference.placeholder.json"
+        },
+        "dataVeins": {
+          "status": "placeholder",
+          "path": "/assets/background/textures/data-veins.placeholder.json"
+        }
+      }
+    }
+  },
+  "archive": {
+    "directory": "/assets/book",
+    "slots": {
+      "closedBook": {
+        "status": "existing",
+        "path": "/assets/book/book_closed.png"
+      },
+      "closedAngle": {
+        "status": "existing",
+        "path": "/assets/book/book_closed_angle.png"
+      },
+      "openingHalf": {
+        "status": "existing",
+        "path": "/assets/book/book_half_open.png"
+      },
+      "pageFlip": {
+        "status": "existing",
+        "path": "/assets/book/book_page_flip.png"
+      },
+      "openBook": {
+        "status": "existing",
+        "path": "/assets/book/book_open.png"
+      },
+      "openGlow": {
+        "status": "existing",
+        "path": "/assets/book/book_open_glow.png"
+      },
+      "pages": {
+        "status": "existing",
+        "path": "/assets/book/book_pages.png"
+      },
+      "scan": {
+        "status": "existing",
+        "path": "/assets/book/book_scan.png"
+      },
+      "energy": {
+        "status": "existing",
+        "path": "/assets/book/book_energy.png"
+      },
+      "hologram": {
+        "status": "existing",
+        "path": "/assets/book/book_hologram.png"
+      }
+    }
+  },
+  "cursor": {
+    "directory": "/assets/cursor",
+    "slots": {
+      "cyberPencil": {
+        "status": "placeholder",
+        "path": "/assets/cursor/cyber-pencil.placeholder.json"
+      },
+      "energyTrail": {
+        "status": "placeholder",
+        "path": "/assets/cursor/trail/energy-trail.placeholder.json"
+      },
+      "clickEffect": {
+        "status": "placeholder",
+        "path": "/assets/cursor/click-effects/click-burst.placeholder.json"
+      }
+    }
+  },
+  "hud": {
+    "directory": "/assets/hud",
+    "slots": {
+      "aiCore": {
+        "status": "placeholder",
+        "path": "/assets/hud/core/ai-core.placeholder.json"
+      },
+      "signal": {
+        "status": "placeholder",
+        "path": "/assets/hud/signal/signal.placeholder.json"
+      },
+      "accessD001": {
+        "status": "placeholder",
+        "path": "/assets/hud/access/access-d001.placeholder.json"
+      },
+      "error017": {
+        "status": "placeholder",
+        "path": "/assets/hud/errors/error-017.placeholder.json"
+      },
+      "scanReticle": {
+        "status": "placeholder",
+        "path": "/assets/hud/reticles/scan-reticle.placeholder.json"
+      },
+      "cornerFrames": {
+        "status": "placeholder",
+        "path": "/assets/hud/frames/corner-frame-set.placeholder.json"
+      },
+      "coordinates": {
+        "status": "placeholder",
+        "path": "/assets/hud/coordinates/coordinates.placeholder.json"
+      },
+      "archiveLoading": {
+        "status": "placeholder",
+        "path": "/assets/hud/loading/archive-loading.placeholder.json"
+      }
+    }
+  },
+  "glitch": {
+    "directory": "/assets/glitch",
+    "slots": {
+      "rgbDisplacement": {
+        "status": "placeholder",
+        "path": "/assets/glitch/rgb-displacement/rgb-displacement.placeholder.json"
+      },
+      "staticNoise": {
+        "status": "placeholder",
+        "path": "/assets/glitch/static-noise/static-noise.placeholder.json"
+      },
+      "signalLoss": {
+        "status": "placeholder",
+        "path": "/assets/glitch/signal-loss/signal-loss.placeholder.json"
+      },
+      "scanlineDistortion": {
+        "status": "placeholder",
+        "path": "/assets/glitch/scanline-distortion/scanline-distortion.placeholder.json"
+      }
+    }
+  }
+}
+

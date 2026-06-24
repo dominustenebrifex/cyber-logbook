@@ -1,0 +1,7 @@
+{
+  "slot": "scanline-distortion",
+  "status": "placeholder",
+  "replaceWith": ["png", "webp", "avif"],
+  "notes": "Future scanline distortion texture."
+}
+

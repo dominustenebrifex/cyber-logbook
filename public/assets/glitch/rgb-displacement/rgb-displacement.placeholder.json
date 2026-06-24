@@ -1,0 +1,7 @@
+{
+  "slot": "rgb-displacement",
+  "status": "placeholder",
+  "replaceWith": ["png", "webp", "avif"],
+  "notes": "Future RGB displacement texture."
+}
+

@@ -1,0 +1,7 @@
+{
+  "slot": "ai-core",
+  "status": "placeholder",
+  "replaceWith": ["png", "svg", "webp"],
+  "notes": "Future AI CORE HUD plate."
+}
+
