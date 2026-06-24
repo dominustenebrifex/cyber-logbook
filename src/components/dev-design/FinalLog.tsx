@@ -7,10 +7,30 @@ const REPORT = [
 ];
 
 const CHANNELS = [
-  { id: "001", name: "INSTAGRAM", handle: "@devdesign", href: "https://instagram.com" },
-  { id: "002", name: "LINKEDIN", handle: "/dev-design", href: "https://linkedin.com" },
-  { id: "003", name: "YOUTUBE", handle: "/devdesign", href: "https://youtube.com" },
-  { id: "004", name: "EMAIL", handle: "signal@devdesign.archive", href: "mailto:signal@devdesign.archive" },
+  {
+    id: "001",
+    name: "INSTAGRAM",
+    handle: "@devdesign.core",
+    href: "https://www.instagram.com/devdesign.core?igsh=MTAwMmh3bmV6emxhZQ==",
+  },
+  {
+    id: "002",
+    name: "LINKEDIN",
+    handle: "Devdesign Club",
+    href: "https://www.linkedin.com/in/devdesign-club-863438417?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+  },
+  {
+    id: "003",
+    name: "YOUTUBE",
+    handle: "@devdesignB2B",
+    href: "https://youtube.com/@devdesignb2b?si=8mkacks4Y8oOLb94",
+  },
+  {
+    id: "004",
+    name: "EMAIL",
+    handle: "devdesign.core@gmail.com",
+    href: "mailto:devdesign.core@gmail.com?subject=DEV%20Design%20Inquiry&body=Hello%20DEV%20Design%2C",
+  },
 ];
 
 export function FinalLog() {
@@ -24,12 +44,17 @@ export function FinalLog() {
           <div className="relative p-6 sm:p-10">
             <div className="grid grid-cols-1 gap-px bg-[color:var(--border)] sm:grid-cols-3">
               {REPORT.map((r) => (
-                <div key={r.k} className="bg-[color:var(--surface-1)] p-5">
+                <div
+                  key={r.k}
+                  className={`report-status-card report-status-card--${
+                    r.tone === "purple" ? "cyan" : "purple"
+                  } bg-[color:var(--surface-1)] p-5`}
+                >
                   <p className="text-mono text-[10px] text-[color:var(--muted-foreground)]">
                     {r.k}
                   </p>
                   <p
-                    className={`text-display mt-2 text-2xl ${
+                    className={`report-status-card__value text-display mt-2 text-2xl ${
                       r.tone === "purple"
                         ? "text-[color:var(--purple)]"
                         : "text-[color:var(--cyan)]"

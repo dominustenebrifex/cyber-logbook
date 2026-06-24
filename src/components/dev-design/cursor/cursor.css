@@ -1,0 +1,179 @@
+@media (hover: hover) and (pointer: fine) {
+  .ai-design-cursor-enabled,
+  .ai-design-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
+.ai-design-cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2147483646; 
+}
+
+.ai-design-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  will-change: transform;
+}
+
+.ai-cursor-reticle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px; /* Slightly increased reticle size to balance larger pen */
+  height: 48px;
+  transform-origin: center center; 
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+.ai-cursor-reticle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: high-quality; 
+}
+
+.ai-cursor-click-fx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.click-ring, .click-burst {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.play-click .click-ring {
+  animation: clickRingAnim 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.play-click .click-burst {
+  animation: clickBurstAnim 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes clickRingAnim {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes clickBurstAnim {
+  0% { transform: scale(0.2) rotate(-45deg); opacity: 1; }
+  100% { transform: scale(1.2) rotate(45deg); opacity: 0; }
+}
+
+/* BIGGER PEN & GAP FIX */
+/* ... keep your other css above ... */
+
+/* BIGGER PEN & PERFECT TIP ALIGNMENT */
+/* FIXED ALIGNMENT FOR BOTTOM-LEFT POINTING PEN */
+/* BIGGER PEN & PERFECT TIP OVERLAP */
+/* BIGGER PEN & PERFECT TIP OVERLAP */
+.ai-cursor-pen {
+  position: absolute;
+  
+  /* --- THE ALIGNMENT JOYSTICK --- */
+  /* These numbers pull the pen DOWN and LEFT to cancel out the transparent space in your PNG */
+  top: -144px;  
+  left: -27px; 
+  
+  /* Make the pen big and cinematic */
+  width: 200px; 
+  height: 200px;
+  
+  /* This ensures that when you click, the pen compresses exactly towards the center of the scanning circle */
+  transform-origin: 30px 50px; 
+  
+  will-change: transform;
+  transition: transform 0.1s ease-out; 
+}
+
+.pen-state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: high-quality;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pen-default { opacity: 1; }
+.pen-hover { opacity: 0; } 
+
+/* Companion layers stay below the primary pen cursor and never capture input. */
+.butterfly-companion-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483644;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.butterfly-companion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483645;
+  display: flex;
+  width: 75px;
+  height: 75px;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.butterfly-companion__sprite {
+  width: 64px;
+  height: 64px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 320px 64px;
+  filter: drop-shadow(0 0 10px rgb(0 150 255 / 90%)) drop-shadow(0 0 20px rgb(123 0 255 / 70%));
+  animation: butterfly-hologram-pulse 2s ease-in-out infinite alternate;
+  will-change: filter, opacity;
+}
+
+@keyframes butterfly-hologram-pulse {
+  from {
+    filter: drop-shadow(0 0 8px rgb(0 150 255 / 80%)) drop-shadow(0 0 15px rgb(123 0 255 / 50%));
+    opacity: 0.9;
+  }
+
+  to {
+    filter: drop-shadow(0 0 15px rgb(0 255 255)) drop-shadow(0 0 30px rgb(150 0 255 / 90%));
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .butterfly-companion__sprite {
+    animation: none;
+  }
+}

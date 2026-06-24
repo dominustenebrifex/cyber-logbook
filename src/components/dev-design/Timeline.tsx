@@ -32,9 +32,7 @@ export function Timeline() {
     <section id="timeline" className="relative scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionLabel index="02" title="MISSION SEQUENCE DATABASE" />
-        <h2 className="text-display mt-6 text-4xl text-foreground sm:text-5xl">
-          MISSION NODES
-        </h2>
+        <h2 className="text-display mt-6 text-4xl text-foreground sm:text-5xl">MISSION NODES</h2>
         <p className="text-mono mt-3 text-[11px] text-[color:var(--muted-foreground)]">
           // CINEMATIC SEQUENCE // CHRONOLOGY INDEXED BY SYSTEM
         </p>
@@ -58,7 +56,7 @@ export function Timeline() {
                       right ? "lg:col-start-2 lg:pl-12" : "lg:pr-12 lg:text-right"
                     }`}
                   >
-                    <div className="hud-panel inline-block w-full max-w-md border-[color:var(--border)] p-5 text-left transition-colors hover:border-[color:var(--cyan-dim)]">
+                    <div className="timeline-node-card hud-panel inline-block w-full max-w-md border-[color:var(--border)] p-5 text-left">
                       <div className="text-mono flex items-center justify-between text-[10px] text-[color:var(--muted-foreground)]">
                         <span className="text-[color:var(--cyan)]">MISSION NODE {n.id}</span>
                         <span>{n.code}</span>

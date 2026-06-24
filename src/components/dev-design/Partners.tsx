@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { SectionLabel } from "./ui";
 import { SectionDiagnostics } from "./HudDiagnostics";
 
@@ -57,10 +56,7 @@ const LINKS: Array<[number, number]> = [
 ];
 
 export function Partners() {
-  const nodes = useMemo(
-    () => PARTNERS.map((p, i) => ({ ...p, ...POSITIONS[i] })),
-    [],
-  );
+  const nodes = PARTNERS.map((p, i) => ({ ...p, ...POSITIONS[i] }));
 
   return (
     <section id="partners" className="relative scroll-mt-24 py-24 sm:py-32">
@@ -185,10 +181,10 @@ export function Partners() {
                 style={{ left: `${n.x}%`, top: `${n.y}%` }}
               >
                 <div className="relative flex flex-col items-center gap-1">
-                  <div className="relative h-7 w-7 border border-[color:var(--cyan-dim)] bg-[color:var(--surface-0)]/80 transition-all duration-300 group-hover:border-[color:var(--cyan)] group-hover:shadow-[0_0_18px_var(--cyan)]">
-                    <div className="absolute inset-1 bg-[color:var(--muted-foreground)]/15 transition-colors group-hover:bg-[color:var(--cyan)]/30" />
-                    <span className="absolute -top-px -left-px h-1 w-1 bg-[color:var(--cyan)]" />
-                    <span className="absolute -bottom-px -right-px h-1 w-1 bg-[color:var(--cyan)]" />
+                  <div className="relative h-[2.7cm] w-[2.7cm] border border-[color:var(--cyan-dim)] bg-[color:var(--surface-0)]/80 transition-all duration-300 group-hover:border-[color:var(--cyan)] group-hover:shadow-[0_0_18px_var(--cyan)]">
+                    <div className="absolute inset-3 bg-[color:var(--muted-foreground)]/15 transition-colors group-hover:bg-[color:var(--cyan)]/30" />
+                    <span className="absolute -top-px -left-px h-2.5 w-2.5 bg-[color:var(--cyan)]" />
+                    <span className="absolute -bottom-px -right-px h-2.5 w-2.5 bg-[color:var(--cyan)]" />
                   </div>
                   <span className="text-mono whitespace-nowrap text-[8px] text-[color:var(--muted-foreground)] transition-colors group-hover:text-[color:var(--cyan)]">
                     {n.code}

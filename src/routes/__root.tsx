@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AIButterflyCompanion, AIDesignCursor } from "../components/dev-design/cursor";
 
 function NotFoundComponent() {
   return (
@@ -125,6 +126,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AIDesignCursor />
+      <AIButterflyCompanion />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

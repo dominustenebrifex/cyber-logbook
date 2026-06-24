@@ -11,12 +11,62 @@ type Member = {
 };
 
 const TEAM: Member[] = [
-  { id: "001", name: "AGENT // VEX", role: "PROTOCOL DIRECTOR", clearance: "05" },
-  { id: "002", name: "AGENT // NOVA", role: "ARCHIVE ENGINEER", clearance: "04" },
-  { id: "003", name: "AGENT // ORION", role: "CINEMATIC LEAD", clearance: "04" },
-  { id: "004", name: "AGENT // HALO", role: "DESIGN OPERATIVE", clearance: "03" },
-  { id: "005", name: "AGENT // ECHO", role: "SIGNAL ANALYST", clearance: "03" },
-  { id: "006", name: "AGENT // CYPRESS", role: "MODULE CURATOR", clearance: "03" },
+  {
+    id: "001",
+    name: "AGENT // VAISHNAVI",
+    role: "LEAD ORGANIZER",
+    clearance: "05",
+    portrait: "/assets/personnel/v.jpeg",
+  },
+  {
+    id: "002",
+    name: "AGENT // SHIVANG",
+    role: "ORGANIZIR AND TECHNICAL LEAD",
+    clearance: "05",
+    portrait: "/assets/personnel/h.jpeg",
+  },
+  {
+    id: "003",
+    name: "AGENT // ADIFAHH",
+    role: "ORGANIZER & OUTREACH LEAD",
+    clearance: "04",
+    portrait: "/assets/personnel/a.jpeg",
+  },
+  {
+    id: "004",
+    name: "AGENT // ANSH",
+    role: "OPERATION LEAD",
+    clearance: "03",
+    portrait: "/assets/personnel/ans.jpeg",
+  },
+  {
+    id: "005",
+    name: "AGENT // ANRDHAYA",
+    role: "OUTREACH MEMBER",
+    clearance: "03",
+    portrait: "/assets/personnel/a2.jpeg",
+  },
+  {
+    id: "006",
+    name: "AGENT // SHIVA",
+    role: "OUTREACH MEMBER",
+    clearance: "03",
+    portrait: "/assets/personnel/s.jpeg",
+  },
+  {
+    id: "007",
+    name: "AGENT // AYUSH",
+    role: "MARKETING",
+    clearance: "03",
+    portrait: "/assets/personnel/a3.jpeg",
+  },
+  {
+    id: "008",
+    name: "AGENT // KRITI",
+    role: "FINANCE LEAD",
+    clearance: "03",
+    portrait: "/assets/personnel/M.jpeg",
+  },
 ];
 
 export function Team() {
@@ -64,12 +114,26 @@ export function Team() {
                   color on hover. Falls back to scan grid if no portrait. */}
               <div className="relative aspect-[3/4] w-full overflow-hidden border-b border-[color:var(--border)] bg-gradient-to-br from-[color:var(--surface-2)] to-[color:var(--surface-0)]">
                 {p.portrait ? (
-                  <img
-                    src={p.portrait}
-                    alt={`Portrait of ${p.name}`}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover grayscale contrast-110 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-[1.02]"
-                  />
+                  <>
+                    <img
+                      src={p.portrait}
+                      alt={`Portrait of ${p.name}`}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="absolute inset-0 h-full w-full object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                    <img
+                      src={p.portrait}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="team-portrait-reveal absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                  </>
                 ) : (
                   <PortraitPlaceholder />
                 )}
@@ -79,7 +143,7 @@ export function Team() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[color:var(--surface-0)]/95 via-[color:var(--surface-0)]/15 to-transparent" />
 
                 {/* Scanline */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[color:var(--cyan)]/70 opacity-0 transition-opacity duration-300 group-hover:animate-scanline group-hover:opacity-100" />
+                <div className="team-portrait-scanline pointer-events-none absolute inset-x-0 top-0 h-px bg-[color:var(--cyan)] opacity-0" />
 
                 {/* HUD corners on image */}
                 <span className="absolute top-2 left-2 h-2 w-2 border-t border-l border-[color:var(--cyan)]" />
@@ -142,10 +206,7 @@ function PortraitPlaceholder() {
           </linearGradient>
         </defs>
         <circle cx="50" cy="48" r="18" fill="url(#silh)" />
-        <path
-          d="M14 130 C18 96 32 80 50 80 C68 80 82 96 86 130 Z"
-          fill="url(#silh)"
-        />
+        <path d="M14 130 C18 96 32 80 50 80 C68 80 82 96 86 130 Z" fill="url(#silh)" />
         <circle
           cx="50"
           cy="48"

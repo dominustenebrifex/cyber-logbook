@@ -46,7 +46,8 @@ export function Tracks() {
         <SectionLabel index="03" title="CREATIVE MODULE DATABASE" />
         <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
           <h2 className="text-display text-4xl text-foreground sm:text-5xl">
-            CREATIVE<br />
+            CREATIVE
+            <br />
             <span className="text-[color:var(--cyan)]">MODULES</span>
           </h2>
           <p className="text-mono max-w-sm text-[11px] text-[color:var(--muted-foreground)]">
@@ -56,13 +57,16 @@ export function Tracks() {
 
         <div className="mt-12 grid grid-cols-1 gap-px bg-[color:var(--border)] sm:grid-cols-2 lg:grid-cols-3">
           {MODULES.map((m) => (
-            <article
+            <a
               key={m.id}
-              className="group relative bg-[color:var(--surface-1)]/70 p-6 transition-all duration-300 hover:bg-[color:var(--surface-2)]/80"
+              href="#access"
+              className="track-module group relative bg-[color:var(--surface-1)]/70 p-6 no-underline transition-all duration-300 hover:bg-[color:var(--surface-2)]/80"
             >
               <span className="absolute inset-0 border border-transparent transition-colors duration-300 group-hover:border-[color:var(--cyan-dim)]" />
-              <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{ boxShadow: "inset 0 0 60px -20px var(--cyan)" }} />
+              <span
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{ boxShadow: "inset 0 0 60px -20px var(--cyan)" }}
+              />
 
               <div className="text-mono flex items-center justify-between text-[10px] text-[color:var(--muted-foreground)]">
                 <span>MODULE {m.id}</span>
@@ -95,7 +99,7 @@ export function Tracks() {
                   ENGAGE →
                 </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>

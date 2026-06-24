@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -14,14 +14,16 @@ export function ProtocolMark({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative grid h-9 w-9 shrink-0 place-items-center border border-[color:var(--cyan-dim)] bg-[color:var(--surface-1)]/70",
+        "relative grid h-9 w-9 shrink-0 place-items-center overflow-hidden border border-[color:var(--cyan-dim)] bg-[color:var(--surface-1)]/70",
         className,
       )}
       aria-label="D-001 Protocol"
     >
-      <span className="text-display text-[color:var(--cyan)] text-lg leading-none">D</span>
-      <span className="absolute -top-1 -left-1 h-1.5 w-1.5 bg-[color:var(--cyan)]" />
-      <span className="absolute -bottom-1 -right-1 h-1.5 w-1.5 bg-[color:var(--cyan)]" />
+      <img
+        src="/assets/brand/dev-design-mark.jpeg"
+        alt=""
+        className="h-full w-full scale-[1.1] object-cover"
+      />
       <span className="text-mono absolute -bottom-3 left-1/2 -translate-x-1/2 text-[7px] text-[color:var(--muted-foreground)]">
         001
       </span>
@@ -31,6 +33,36 @@ export function ProtocolMark({ className }: { className?: string }) {
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [pressedItem, setPressedItem] = useState<string | null>(null);
+  const pressedTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    const sections = NAV_ITEMS.map((item) => document.getElementById(item.href.slice(1))).filter(
+      (section): section is HTMLElement => section !== null,
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const current = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (current) setActiveSection(current.target.id);
+      },
+      { rootMargin: "-35% 0px -55%", threshold: [0.05, 0.2, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => {
+      observer.disconnect();
+      if (pressedTimer.current !== undefined) window.clearTimeout(pressedTimer.current);
+    };
+  }, []);
+
+  const acknowledgeTouch = (href: string) => {
+    if (pressedTimer.current !== undefined) window.clearTimeout(pressedTimer.current);
+    setPressedItem(href);
+    pressedTimer.current = window.setTimeout(() => setPressedItem(null), 200);
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -68,7 +100,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="text-mono lg:hidden inline-flex items-center gap-2 border border-[color:var(--cyan-dim)] px-3 py-1.5 text-[10px] text-[color:var(--cyan)]"
+            className="text-mono lg:hidden inline-flex min-h-11 items-center gap-2 border border-[color:var(--cyan-dim)] px-3 py-1.5 text-[10px] text-[color:var(--cyan)]"
             aria-expanded={open}
             aria-label="Toggle archive menu"
           >
@@ -94,28 +126,52 @@ export function Navbar() {
             ARCHIVE DIRECTORY // INDEX 00
           </p>
           <ul className="mt-6 flex flex-col divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
-            {NAV_ITEMS.map((item, i) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-baseline justify-between py-5"
+            {NAV_ITEMS.map((item, i) => {
+              const isHighlighted =
+                activeSection === item.href.slice(1) || pressedItem === item.href;
+              return (
+                <li
+                  key={item.label}
+                  className={cn("mobile-nav-item", isHighlighted && "mobile-nav-item--highlighted")}
                 >
-                  <span className="text-display text-2xl text-foreground">{item.label}</span>
-                  <span className="text-mono text-[10px] text-[color:var(--muted-foreground)]">
-                    {String(i + 1).padStart(3, "0")} //
-                  </span>
-                </a>
-              </li>
-            ))}
+                  <a
+                    href={item.href}
+                    onPointerDown={() => acknowledgeTouch(item.href)}
+                    onClick={() => {
+                      setActiveSection(item.href.slice(1));
+                      setOpen(false);
+                    }}
+                    className={cn(
+                      "flex items-baseline justify-between py-5 transition-[color,filter] duration-200 ease-out hover:text-[color:var(--cyan)] active:text-[color:var(--cyan)]",
+                      isHighlighted
+                        ? "text-[color:var(--cyan)] [filter:drop-shadow(0_0_7px_var(--cyan-dim))]"
+                        : "text-foreground hover:[filter:drop-shadow(0_0_7px_var(--cyan-dim))]",
+                    )}
+                  >
+                    <span className="text-display text-2xl">{item.label}</span>
+                    <span
+                      className={cn(
+                        "text-mono relative text-[10px] transition-colors duration-200",
+                        isHighlighted
+                          ? "text-[color:var(--cyan)]"
+                          : "text-[color:var(--muted-foreground)]",
+                      )}
+                    >
+                      {isHighlighted && (
+                        <span className="mobile-nav-item__indicator" aria-hidden="true" />
+                      )}
+                      {String(i + 1).padStart(3, "0")} //
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           <div className="mt-auto flex items-center justify-between pt-8">
             <span className="text-mono text-[10px] text-[color:var(--muted-foreground)]">
               CLEARANCE 01
             </span>
-            <span className="text-mono text-[10px] text-[color:var(--cyan)]">
-              D-001 // STABLE
-            </span>
+            <span className="text-mono text-[10px] text-[color:var(--cyan)]">D-001 // STABLE</span>
           </div>
         </div>
       </div>
