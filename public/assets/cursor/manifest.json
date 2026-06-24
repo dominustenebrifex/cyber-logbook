@@ -1,0 +1,10 @@
+{
+  "category": "cursor",
+  "purpose": "Cyber pencil cursor, energy trail, and click effect assets.",
+  "publicDirectory": "/assets/cursor",
+  "subdirectories": {
+    "trail": "/assets/cursor/trail",
+    "clickEffects": "/assets/cursor/click-effects"
+  }
+}
+
