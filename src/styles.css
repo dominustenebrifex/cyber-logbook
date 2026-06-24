@@ -647,6 +647,7 @@ header nav > ul.hidden a:hover {
 .mobile-hero-artifact__touch-cursor[data-active="true"] {
   opacity: 0.72;
 }
+
 .mobile-hero-artifact__touch-cursor img {
   width: 100%;
   height: 100%;
