@@ -1,0 +1,12 @@
+{
+  "category": "hero-sequence",
+  "purpose": "AI consciousness, corrupted AI, butterfly emergence frames, and D Protocol symbols.",
+  "publicDirectory": "/assets/hero",
+  "subdirectories": {
+    "aiFace": "/assets/hero/ai-face",
+    "corruption": "/assets/hero/corruption",
+    "butterflies": "/assets/hero/butterflies",
+    "dProtocol": "/assets/hero/d-protocol"
+  }
+}
+
