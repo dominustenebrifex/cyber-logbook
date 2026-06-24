@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 2147483646; 
+  z-index: 2147483646;
 }
 
 .ai-design-cursor-container {
@@ -26,13 +26,23 @@
   will-change: transform;
 }
 
+/* The same cursor becomes visible only while a touch is active on coarse pointers. */
+.ai-design-cursor-container[data-touch-mode="true"] {
+  opacity: 0;
+  transition: opacity 140ms ease-out;
+}
+
+.ai-design-cursor-container[data-touch-mode="true"][data-touch-active="true"] {
+  opacity: 1;
+}
+
 .ai-cursor-reticle {
   position: absolute;
   top: 0;
   left: 0;
   width: 48px; /* Slightly increased reticle size to balance larger pen */
   height: 48px;
-  transform-origin: center center; 
+  transform-origin: center center;
   will-change: transform, opacity;
   transition: opacity 0.3s ease;
   mix-blend-mode: screen;
@@ -42,7 +52,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  image-rendering: high-quality; 
+  image-rendering: high-quality;
 }
 
 .ai-cursor-click-fx {
@@ -55,7 +65,8 @@
   mix-blend-mode: screen;
 }
 
-.click-ring, .click-burst {
+.click-ring,
+.click-burst {
   position: absolute;
   top: -30px;
   left: -30px;
@@ -75,13 +86,25 @@
 }
 
 @keyframes clickRingAnim {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(1.5); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 @keyframes clickBurstAnim {
-  0% { transform: scale(0.2) rotate(-45deg); opacity: 1; }
-  100% { transform: scale(1.2) rotate(45deg); opacity: 0; }
+  0% {
+    transform: scale(0.2) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 /* BIGGER PEN & GAP FIX */
@@ -93,21 +116,21 @@
 /* BIGGER PEN & PERFECT TIP OVERLAP */
 .ai-cursor-pen {
   position: absolute;
-  
+
   /* --- THE ALIGNMENT JOYSTICK --- */
   /* These numbers pull the pen DOWN and LEFT to cancel out the transparent space in your PNG */
-  top: -144px;  
-  left: -27px; 
-  
+  top: -144px;
+  left: -27px;
+
   /* Make the pen big and cinematic */
-  width: 200px; 
+  width: 200px;
   height: 200px;
-  
+
   /* This ensures that when you click, the pen compresses exactly towards the center of the scanning circle */
-  transform-origin: 30px 50px; 
-  
+  transform-origin: 30px 50px;
+
   will-change: transform;
-  transition: transform 0.1s ease-out; 
+  transition: transform 0.1s ease-out;
 }
 
 .pen-state {
@@ -121,8 +144,12 @@
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pen-default { opacity: 1; }
-.pen-hover { opacity: 0; } 
+.pen-default {
+  opacity: 1;
+}
+.pen-hover {
+  opacity: 0;
+}
 
 /* Companion layers stay below the primary pen cursor and never capture input. */
 .butterfly-companion-canvas {
